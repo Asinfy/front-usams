@@ -4,7 +4,7 @@ import { addProductCart } from '../helpers/addProductsCart.js';
 
 export const DetailProducts = ({discountPurchase ,setTotalDiscount, productsCart, productDetail = null,  setProductsCart, setSubtotal, setTotal, setIva}) => {
 
-    const URL_BASE = "https://zoho.accsolutions.tech/API/v1/Productos_1_hora";    
+    const URL_BASE = "https://zoho.accsolutions.tech/API/v1/Productos_USAMS";    
 
     const closeProductDetail = () => {
 
