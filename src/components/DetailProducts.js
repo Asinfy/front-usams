@@ -74,7 +74,7 @@ export const DetailProducts = ({discountPurchase ,setTotalDiscount, productsCart
                                             <div className='loader'></div>
                                         </div>
                                     <div className='center-block'>
-                                        Agregar al carrito <img src="./img/cart-product.png" alt="" /> 
+                                        Agregar al carrito <img src="./img/cart-product.svg" alt="" /> 
                                     </div>
                                     
                                     </>
