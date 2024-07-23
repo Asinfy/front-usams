@@ -902,7 +902,7 @@ export const RegisterSend = ({discountPurchase, setDiscountPurchase, totalDiscou
         <div className='detail' id='detail-success'>
 
             <div className="cart__header-img">
-                <img src="./img/logo-usams-blanco.svg" alt=""/>
+                <img src="./img/logo-usams-blanco.png" alt=""/>
             </div>
 
             <div className="cart__close-cart" id="close-cart" onClick={closeSuccessDetail}>

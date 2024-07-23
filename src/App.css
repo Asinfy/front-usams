@@ -506,7 +506,7 @@ img {
 /* ============== PRODUCTOS =============== */
 
 .products {
-
+    min-height: 80vh;
 }
 
 .products__category {

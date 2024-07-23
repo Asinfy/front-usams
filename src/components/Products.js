@@ -19,7 +19,7 @@ export const Products = ({groupProducts, setCurrentPage}) => {
     <>
       <section className="banner">
             <div className="container">
-                <div className="row">
+                {/* <div className="row">
                     <div className="col col-100">
                         <div className="owl-carousel owl-theme">
                             <div className="item">
@@ -35,7 +35,7 @@ export const Products = ({groupProducts, setCurrentPage}) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </section>
 
