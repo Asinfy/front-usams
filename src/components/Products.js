@@ -19,23 +19,23 @@ export const Products = ({groupProducts, setCurrentPage}) => {
     <>
       <section className="banner">
             <div className="container">
-                {/* <div className="row">
+                <div className="row">
                     <div className="col col-100">
                         <div className="owl-carousel owl-theme">
                             <div className="item">
                                 <div className="banner__img">
-                                    <img src="./img/Banner-1Hora-img1.png" alt=""/>
+                                    <img src="./img/Banner-Usams.png" alt=""/>
                                 </div>
                                 
                             </div>
                             <div className="item">
-                                <div className="banner__img">
+                                {/* <div className="banner__img">
                                     <img src="./img/Frame2.png" alt=""/>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
         </section>
 
