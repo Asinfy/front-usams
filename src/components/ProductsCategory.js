@@ -80,8 +80,32 @@ export const ProductsCategory = ({ discountPurchase, setTotalDiscount, category 
                 return(
                     <div className="col col-33 col-mb-50" key={product.id}>
                         <article className="products__card-product">
-                            <div className="products__card-img">
-                                <img src={product.Imagen_publica.url} alt=""/>
+                            <div className='products__cont-img'>
+                                <div className="products__card-img">
+                                    <img src={product.Imagen_publica.url} alt=""/>
+                                    
+                                </div>
+
+                                <div className="products__options">
+                                    {/* <button className="btn btn-blue">Comprar</button> */}
+                                
+                                    <div className="products__options-product option-add-product" id={product.ID} onClick={productsCart !== null && productsCart.find(item => item.ID === product.ID) ? null : (e) => addProduct(e,product.ID) }>
+                                        {productsCart !== null && productsCart.find(item => item.ID === product.ID) ? (
+                                        <i class="fa-solid fa-check"></i>
+                                        ) : (
+                                            <>
+                                            <div className='load-add-cart display-none'>
+                                                <div className='loader'></div>
+                                            </div>
+                                            <img src="./img/cart-usams.png" alt="" />
+                                            </>
+                                        
+                                        ) }    
+                                    </div>
+                                    <div className="products__options-product" onClick={() => openProductDetail(product)}>
+                                        <img src="./img/icon-details.svg" alt="" />
+                                    </div>
+                                </div>
                             </div>
                             <div className="products__card-description">
                                 <span className="products__type">{product.GrupoDeProductos.Description}</span>
@@ -103,25 +127,7 @@ export const ProductsCategory = ({ discountPurchase, setTotalDiscount, category 
                                 <span>-37% OFF</span>
                             </div> */}
 
-                            <div className="products__options">
-                                {/* <button className="btn btn-blue">Comprar</button> */}
-                                <div className="products__options-product" onClick={() => openProductDetail(product)}>
-                                     <img src="./img/icon-details.svg" alt="" />
-                                </div>
-                                <div className="products__options-product option-add-product" id={product.ID} onClick={productsCart !== null && productsCart.find(item => item.ID === product.ID) ? null : (e) => addProduct(e,product.ID) }>
-                                    {productsCart !== null && productsCart.find(item => item.ID === product.ID) ? (
-                                    <i class="fa-solid fa-check"></i>
-                                    ) : (
-                                        <>
-                                         <div className='load-add-cart display-none'>
-                                            <div className='loader'></div>
-                                        </div>
-                                        <img src="./img/cart-product.svg" alt="" />
-                                        </>
-                                    
-                                    ) }    
-                                </div>
-                            </div>
+                            
 
                         </article>
                     </div>

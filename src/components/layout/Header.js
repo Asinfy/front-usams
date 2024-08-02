@@ -81,7 +81,7 @@ return (
                     <div className="header__container container">
                         <div className="header__logo">
                             <a href="/">
-                                <img src="./img/logo-usams.png" alt="" />
+                                <img src="./img/logo-usams-blanco.png" alt="" />
                             </a>
                         </div>
                         <nav className="header__nav">
@@ -93,7 +93,7 @@ return (
                         </nav>
                         <div className="header__cart" onClick={openCart}>
                             <div className="btn btn-cart" id="btn-cart">
-                                <img src="./img/cart.png" alt="" />
+                                <img src="./img/cart-white.png" alt="" />
                             </div>
                             <div className="header__text-cart">
                                 <span>Tu carrito</span>
@@ -109,7 +109,7 @@ return (
                         <button className="btn btn-search">
                             <img src="./img/search.png" alt="" />
                         </button>
-                        <input type="search" placeholder="Filtrar por producto" id="search-product" onChange={(e) => searchProducts(e)} />
+                        <input type="search" placeholder="Buscar por marca o referencia" id="search-product" onChange={(e) => searchProducts(e)} />
                     </nav>
                 </div>
             
