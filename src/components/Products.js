@@ -28,10 +28,11 @@ export const Products = ({groupProducts, setCurrentPage}) => {
                                 </div>
                                 
                             </div>
+                           
                             <div className="item">
-                                {/* <div className="banner__img">
-                                    <img src="./img/Frame2.png" alt=""/>
-                                </div> */}
+                                <div className="banner__img">
+                                    <img src="./img/Banner-Usams2.png" alt=""/>
+                                </div>
                             </div>
                         </div>
                     </div>
