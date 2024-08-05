@@ -605,7 +605,7 @@ img {
     position: absolute;
     top: 0rem;
     right: 0rem;
-    background-color: var(--red);
+    background-color: #333;
     padding: 0.3rem;
     font-size: 0.9rem;
     font-weight: bold;
