@@ -54,9 +54,9 @@ export const Footer = () => {
                             <div className='footer__contact'>
                                 <h3>CONTÁCTANOS</h3>
                                 <ul>
-                                    <li> <span>Atención al cliente:</span> +57 316 258 1402 </li>
-                                    <li> <span>Correo:</span> @termox.co </li>
-                                    <li> <span>Dirección:</span> CL. 35 #66 B 72, Vegas Del Parque, Itagüi, Antioquia </li>
+                                    <li> <span>Atención al cliente:</span>  </li>
+                                    <li> <span>Correo:</span> </li>
+                                    <li> <span>Dirección:</span>  </li>
                                 </ul>
                             </div>
 
