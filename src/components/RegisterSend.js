@@ -545,7 +545,7 @@ export const RegisterSend = ({discountPurchase, setDiscountPurchase, totalDiscou
     
             //Validar que si esté el cupón en el sistema
             if (data !== null) {
-                coupon = data.filter( coupon => coupon.Codigo_Descuento === coupon_value && coupon.Estado === "Activo" );
+                coupon = data.filter( coupon => coupon.Codigo_Descuento === coupon_value && coupon.Estado === "Activo" && coupon.Marca === "usams");
             }else{
                 errors.coupon = "No hay cupones disponibles";
             }
