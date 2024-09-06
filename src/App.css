@@ -1396,10 +1396,15 @@ img {
     }
 
     .detail__container {
-
+        max-height: 90vh;
+        
     }
 
-    
+    .detail__container .products__card-description .products__description{
+        display: block;
+        max-height: 35vh;
+        overflow: scroll;
+    }
     .col-100-sm-mb {
         width: 100% !important;
    

@@ -255,12 +255,12 @@ export const RegisterSend = ({discountPurchase, setDiscountPurchase, totalDiscou
 
         let verify = verifyInputs(data);
 
-        let city = citiesDep.filter( city => {
+        let city = citiesDep.length !== 0 ? citiesDep.filter( city => {
 
             city_api = city.ID;
 
            return city.Codigo_Municipio === data.ciudad.value;
-        });
+        }): [];
         let departament = departaments.filter( departament => departament.id === data.departamento.value);
 
 
