@@ -18,6 +18,7 @@ export const Header = ({total, products, setProducts, setCurrentPage}) => {
     setTimeout(() => {
         trama.classList.add("open-trama-styles");
     },100)
+    
   
 
 } 
