@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import {BrowserRouter, Navigate, NavLink, Route, Routes} from "react-router-dom"
 import { Products } from '../components/Products.js'
 import { Header } from '../components/layout/Header.js'
@@ -12,7 +13,6 @@ export const MainRouter = () => {
 
     //const URL_BASE_GROUP = "https://nexyapp-f3a65a020e2a.herokuapp.com/zoho/v1/console/GrupoDeProductos_Report?where=ID%3D1889220000051935384";
     const URL_BASE = "https://zoho.accsolutions.tech/API/v1/Productos_USAMS?where=Marca.Marca%3D%22USAMS%22";
-
     const [productsCart, setProductsCart] = useState(null);
     const [iva, setIva] = useState("");
     const [subtotal, setSubtotal] = useState("");
@@ -23,9 +23,18 @@ export const MainRouter = () => {
     const [groupProducts, setGroupProducts] = useState([]);
     const [products, setProducts] = useState([]);
 
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [productDetail, setProductDetail] = useState("");
+    const [isAuth, setIsAuth] = useState(() => {
+        const savedAuth = localStorage.getItem('isAuth')
+        return savedAuth == 'true' ? savedAuth : false
+    });
+    const [user, setUser] = useState(() => {
+        const savedUser = localStorage.getItem('user')
+        return savedUser ? JSON.parse(savedUser) : null
+    })
+    const [authError, setAuthError] = useState(null)
 
 
     //Cargar los productos de 1 hora desde la API
@@ -80,16 +89,43 @@ export const MainRouter = () => {
 
     },[]);
 
+    useEffect(() => {
+        localStorage.setItem('isAuth', isAuth)
+        localStorage.setItem('user', JSON.stringify(user))
+    }, [user, isAuth])
+
+    const validateUser = async data => {
+        try {
+            console.log(data)
+            const {email, password} = data
+            const URL_MAYORISTAS = `https://zoho.accsolutions.tech/API/v1/Mayoristas_Usams_Report?where=Email="${email}"`;
+            const result = await axios.get(URL_MAYORISTAS)
+
+            const fetchedUser = result.data.data[0]
+            console.log(result.data)
+            if (fetchedUser.password !== password) return setAuthError('Usuario o contraseña incorrectas')
+            
+            setIsAuth(true)
+
+            const loggedUser = {
+                email: fetchedUser.Email,
+                status: 'loggedIn'
+            }
+            setUser(loggedUser)
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     return (
       <BrowserRouter>
   
-          <Header total={total} products={products} setProducts={setProducts} setCurrentPage={setCurrentPage}/>
+          <Header total={total} setUser={setUser} validateUser={validateUser} isAuth={isAuth} setIsAuth={setIsAuth} products={products} setProducts={setProducts} setCurrentPage={setCurrentPage} setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen}/>
   
           <main>
               <Routes>
                   <Route path='/' element={<Products  groupProducts={groupProducts} setCurrentPage={setCurrentPage} />} >
-                        <Route path='/' element={<ProductsCategory discountPurchase={discountPurchase} setTotalDiscount={setTotalDiscount} productsCart={productsCart} setProductsCart={setProductsCart} setIva={setIva} setSubtotal={setSubtotal} setTotal={setTotal} search="true" products={products} setProducts={setProducts} currentPage={currentPage} setCurrentPage={setCurrentPage} setProductDetail={setProductDetail}/>}/>
+                        <Route path='/' element={<ProductsCategory isAuth={isAuth} discountPurchase={discountPurchase} setTotalDiscount={setTotalDiscount} productsCart={productsCart} setProductsCart={setProductsCart} setIva={setIva} setSubtotal={setSubtotal} setTotal={setTotal} search="true" products={products} setProducts={setProducts} currentPage={currentPage} setCurrentPage={setCurrentPage} setProductDetail={setProductDetail}/>}/>
                         { groupProducts && groupProducts.length !== 0 && (
                             groupProducts.map( group => {
                                 let new_products = [];
@@ -102,7 +138,7 @@ export const MainRouter = () => {
 
                                 return (
                                     <>
-                                        <Route path={group} element={<ProductsCategory discountPurchase={discountPurchase} setTotalDiscount={setTotalDiscount} category={group} productsCart={productsCart} setProductsCart={setProductsCart} setIva={setIva} setSubtotal={setSubtotal} setTotal={setTotal}  products={new_products} setProducts={setProducts} currentPage={currentPage} setCurrentPage={setCurrentPage} setProductDetail={setProductDetail}/>} />
+                                        <Route path={group} element={<ProductsCategory isAuth={isAuth} discountPurchase={discountPurchase} setTotalDiscount={setTotalDiscount} category={group} productsCart={productsCart} setProductsCart={setProductsCart} setIva={setIva} setSubtotal={setSubtotal} setTotal={setTotal}  products={new_products} setProducts={setProducts} currentPage={currentPage} setCurrentPage={setCurrentPage} setProductDetail={setProductDetail}/>} />
                                     </>
                                 )
                             } )

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { formatNumber } from '../../helpers/formatNumbers.js';
+import Login from '../Login.js'
 
-export const Header = ({total, products, setProducts, setCurrentPage}) => {
+export const Header = ({total, products, setUser, setProducts, setCurrentPage, setIsModalOpen, isModalOpen, isAuth, validateUser, setIsAuth}) => {
 
     //const [searchProduct, setSearchProduct] = useState('');
     const [listProducts, setListProducts] = useState([]);
@@ -107,7 +108,14 @@ return (
                                 <span className="header__price-cart">{formatNumber(total, true)} COP</span>
                             </div>
                         </div>
-                        
+                        <div>
+                            <span className='login' onClick={() => {
+                                if (!isAuth) return setIsModalOpen(true)
+                                
+                                setIsAuth(false)
+                                setUser(null)
+                            }}>{!isAuth ? 'Iniciar sesion' : 'Cerrar Sesion'}</span>
+                        </div>
                     </div>
 
                 </div>
@@ -121,6 +129,7 @@ return (
                 </div>
             
             </header>
+            {isModalOpen && <Login validateUser={validateUser} setIsModalOpen={setIsModalOpen} />}
         </>
     )
 }
