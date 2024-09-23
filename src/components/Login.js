@@ -1,8 +1,10 @@
 import { MdEmail, MdLock } from "react-icons/md";
 import { useForm } from 'react-hook-form'
+import { useState } from 'react'
 
 function Login({ setIsModalOpen, validateUser }) {
     const { handleSubmit, register } = useForm()
+    const [email, setEmail] = useState('')
 
     return (
         <div className='wrapper'>
@@ -15,7 +17,7 @@ function Login({ setIsModalOpen, validateUser }) {
             })}>
                 <h1>Login </h1>
                 <div class="input-box">
-                    <input type="text" {...register('email', { required: true })} placeholder="Correo"/>
+                <input type="text" {...register('email', {required: true})} placeholder="Correo" value={email} onInput={(e) => setEmail(e.target.value.toLowerCase())} />
                     <MdEmail className="icon"/>
                 </div>
                 <div class="input-box">
