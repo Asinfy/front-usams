@@ -1282,6 +1282,7 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    top: 0;
 }
 
 .wrapper .x{
@@ -1362,6 +1363,20 @@ img {
     color: #fff;
     font-weight: 700;
 
+}
+
+.iframeZoho {
+    margin: 10rem auto 5em auto;
+    width: fit-content;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0.3em 0.3em 0.5em #bbbbbb66;
+}
+
+.iframeForm {
+    height: 300px;
+    width: 500px;
 }
 
 /* ============ Responsive =========== */
@@ -1467,6 +1482,8 @@ img {
         margin: 1rem 0;
         margin-top: 1.4rem;
     }
+
+    
 }
 
 @media (max-width: 768px) {
@@ -1580,10 +1597,36 @@ img {
         justify-content: start
 
     }
+
+    .header__logo{
+        width: 120px;
+    }
+    .header__cart{
+        width: 120px;
+    }
+    .header__cart img {
+        width: 25px;
+    }
+
+    .header__text-cart span {
+       font-size: 12px;
+    }
     
     .login{
         padding: 5px;
-        font-size: 10px;
+        font-size: 11px;
+    }
+
+    .iframeForm{
+        margin: 3rem auto 2em auto;
+        width: fit-content;
+        background: #fff;
+        border-radius: 10px;
+    }
+
+    .iframeForm{
+        width: 350px;
+        height: 270px;
     }
 
 }

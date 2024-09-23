@@ -89,7 +89,7 @@ return (
                     <div className="header__container container">
                         <div className="header__logo">
                             <a href="/">
-                                <img src="./img/logo-usams-blanco.png" alt="" />
+                                <img className='header__imgLog' src="./img/logo-usams-blanco.png" alt="" />
                             </a>
                         </div>
                         <nav className="header__nav">
@@ -117,7 +117,6 @@ return (
                             }}>{!isAuth ? 'Iniciar sesion' : 'Cerrar Sesion'}</span>
                         </div>
                     </div>
-
                 </div>
                 <div className='header-mb'>
                     <nav className="header__nav">
@@ -133,3 +132,5 @@ return (
         </>
     )
 }
+
+

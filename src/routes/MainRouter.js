@@ -5,6 +5,7 @@ import {BrowserRouter, Navigate, NavLink, Route, Routes} from "react-router-dom"
 import { Products } from '../components/Products.js'
 import { Header } from '../components/layout/Header.js'
 import { Footer } from '../components/layout/Footer.js'
+import Register from '../components/Register.js'
 import { Cart } from '../components/Cart.js'
 import { ProductsCategory } from '../components/ProductsCategory.js'
 import { DetailProducts } from '../components/DetailProducts.js'
@@ -124,6 +125,7 @@ export const MainRouter = () => {
   
           <main>
               <Routes>
+                <Route path='/register' element={<Register />} />
                   <Route path='/' element={<Products  groupProducts={groupProducts} setCurrentPage={setCurrentPage} />} >
                         <Route path='/' element={<ProductsCategory isAuth={isAuth} discountPurchase={discountPurchase} setTotalDiscount={setTotalDiscount} productsCart={productsCart} setProductsCart={setProductsCart} setIva={setIva} setSubtotal={setSubtotal} setTotal={setTotal} search="true" products={products} setProducts={setProducts} currentPage={currentPage} setCurrentPage={setCurrentPage} setProductDetail={setProductDetail}/>}/>
                         { groupProducts && groupProducts.length !== 0 && (
