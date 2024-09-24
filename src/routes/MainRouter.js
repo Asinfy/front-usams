@@ -151,7 +151,7 @@ export const MainRouter = () => {
 
           <Footer />
           <Cart discountPurchase={discountPurchase} setDiscountPurchase={setDiscountPurchase} totalDiscount={totalDiscount} setTotalDiscount={setTotalDiscount} productsCart={productsCart} setProductsCart={setProductsCart} iva={iva} setIva={setIva} subtotal={subtotal} setSubtotal={setSubtotal} total={total} setTotal={setTotal} />
-          <DetailProducts discountPurchase={discountPurchase} setTotalDiscount={setTotalDiscount} productsCart={productsCart} productDetail={productDetail} setProductsCart={setProductsCart} setIva={setIva} setSubtotal={setSubtotal} setTotal={setTotal}/>
+          <DetailProducts isAuth={isAuth} discountPurchase={discountPurchase} setTotalDiscount={setTotalDiscount} productsCart={productsCart} productDetail={productDetail} setProductsCart={setProductsCart} setIva={setIva} setSubtotal={setSubtotal} setTotal={setTotal}/>
 
       </BrowserRouter>
   

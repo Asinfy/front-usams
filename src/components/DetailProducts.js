@@ -2,7 +2,7 @@ import React from 'react'
 import { formatNumber } from '../helpers/formatNumbers.js'
 import { addProductCart } from '../helpers/addProductsCart.js';
 
-export const DetailProducts = ({discountPurchase ,setTotalDiscount, productsCart, productDetail = null,  setProductsCart, setSubtotal, setTotal, setIva}) => {
+export const DetailProducts = ({discountPurchase ,setTotalDiscount, productsCart, productDetail = null,  setProductsCart, setSubtotal, setTotal, setIva, isAuth}) => {
 
     const URL_BASE = "https://zoho.accsolutions.tech/API/v1/Productos_USAMS";    
 
@@ -59,10 +59,10 @@ export const DetailProducts = ({discountPurchase ,setTotalDiscount, productsCart
                                         {productDetail.Promosion !== null && productDetail.Promosion === "Si" && productDetail.PrecioComparacion !== 0 && productDetail.PrecioComparacion !== null ? (
                                             <>
                                                 <span className="products__price">{ formatNumber(productDetail.PrecioComparacion, true)} COP</span>
-                                                <span className="products__price-before">{formatNumber(productDetail.Precio_Mayorista, true)} COP</span>
+                                                <span className="products__price-before">{formatNumber(isAuth ? productDetail.Precio_Mayorista : productDetail.Precio_detal, true)} COP</span>
                                             </>
                                         ): (
-                                            <span className="products__price">{formatNumber(productDetail.Precio_Mayorista, true)} COP</span>
+                                            <span className="products__price">{formatNumber(isAuth ? productDetail.Precio_Mayorista : productDetail.Precio_detal, true)} COP</span>
                                         )}
                                     </div>
                                     
