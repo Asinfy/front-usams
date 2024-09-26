@@ -110,10 +110,16 @@ return (
                         </div>
                         <div>
                             <span className='login' onClick={() => {
-                                if (!isAuth) return setIsModalOpen(true)
+                                if (!isAuth) { 
+                                    return setIsModalOpen(true) 
+                                }
+                                else {
+                                    setIsAuth(false)
+                                    setUser(null)
+                                    localStorage.setItem("product_usams_asc", "[]");
+                                    window.location.reload();
+                                }
                                 
-                                setIsAuth(false)
-                                setUser(null)
                             }}>{!isAuth ? 'Iniciar sesion' : 'Cerrar Sesion'}</span>
                         </div>
                     </div>

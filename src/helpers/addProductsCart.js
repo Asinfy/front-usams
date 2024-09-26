@@ -1,6 +1,6 @@
 import { addDiscountPurchase } from "./addDiscountPurchase.js";
 
-export const addProductCart = async(e,id, URL_BASE, setProductsCart, setTotal, setSubtotal, setIva, discountPurchase, setTotalDiscount) => {
+export const addProductCart = async(e,id, URL_BASE, setProductsCart, setTotal, setSubtotal, setIva, discountPurchase, setTotalDiscount,isAuth) => {
 
     //Mostrar cargando y ocultar el icono del carrito
     const item_add_product = e.target.id.length !== 0 ? e.target : e.target.parentNode;
@@ -30,7 +30,7 @@ export const addProductCart = async(e,id, URL_BASE, setProductsCart, setTotal, s
         let listCart = JSON.parse(localStorage.getItem('product_usams_asc'));
         console.log(listCart);
         data[0].quantity = 1;
-        data[0].precio = parseInt(data[0].Precio_Mayorista);
+        data[0].precio = (isAuth === 'true' ? parseInt(data[0].Precio_Mayorista) : parseInt(data[0].Precio_detal));
     
          //  Verifica e inserta si el listado de productos en el carrito ya existe
         if (Array.isArray(listCart)) {

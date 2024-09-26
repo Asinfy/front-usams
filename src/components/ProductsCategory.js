@@ -37,7 +37,7 @@ export const ProductsCategory = ({ discountPurchase, setTotalDiscount, category 
   //Agregar productos al carrito
     const addProduct = async(e,id) => {
 
-        addProductCart(e, id, URL_BASE_API, setProductsCart, setTotal, setSubtotal, setIva, discountPurchase, setTotalDiscount);
+        addProductCart(e, id, URL_BASE_API, setProductsCart, setTotal, setSubtotal, setIva, discountPurchase, setTotalDiscount, isAuth);
     }
 
     const openProductDetail = (product) => {

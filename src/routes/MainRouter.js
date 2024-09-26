@@ -107,6 +107,7 @@ export const MainRouter = () => {
             if (fetchedUser.password !== password) return setAuthError('Usuario o contraseña incorrectas')
             
             setIsAuth(true)
+            localStorage.setItem("product_usams_asc","[]");
 
             const loggedUser = {
                 email: fetchedUser.Email,
@@ -150,7 +151,7 @@ export const MainRouter = () => {
           </main>
 
           <Footer />
-          <Cart discountPurchase={discountPurchase} setDiscountPurchase={setDiscountPurchase} totalDiscount={totalDiscount} setTotalDiscount={setTotalDiscount} productsCart={productsCart} setProductsCart={setProductsCart} iva={iva} setIva={setIva} subtotal={subtotal} setSubtotal={setSubtotal} total={total} setTotal={setTotal} />
+          <Cart discountPurchase={discountPurchase} setDiscountPurchase={setDiscountPurchase} totalDiscount={totalDiscount} setTotalDiscount={setTotalDiscount} productsCart={productsCart} setProductsCart={setProductsCart} iva={iva} setIva={setIva} subtotal={subtotal} setSubtotal={setSubtotal} total={total} setTotal={setTotal} isAuth={isAuth} />
           <DetailProducts isAuth={isAuth} discountPurchase={discountPurchase} setTotalDiscount={setTotalDiscount} productsCart={productsCart} productDetail={productDetail} setProductsCart={setProductsCart} setIva={setIva} setSubtotal={setSubtotal} setTotal={setTotal}/>
 
       </BrowserRouter>

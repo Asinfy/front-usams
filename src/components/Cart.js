@@ -3,7 +3,7 @@ import { formatNumber } from '../helpers/formatNumbers.js';
 import { RegisterSend } from './RegisterSend.js';
 import { addDiscountPurchase } from '../helpers/addDiscountPurchase.js';
 
-export const Cart = ({discountPurchase, setDiscountPurchase, setTotalDiscount, totalDiscount, productsCart, setProductsCart, iva, setIva, subtotal, setSubtotal, total, setTotal}) => {
+export const Cart = ({discountPurchase, setDiscountPurchase, setTotalDiscount, totalDiscount, productsCart, setProductsCart, iva, setIva, subtotal, setSubtotal, total, setTotal, isAuth}) => {
     // const [listCart, setListCart] = useState([]);
 
 
@@ -77,15 +77,15 @@ export const Cart = ({discountPurchase, setDiscountPurchase, setTotalDiscount, t
                 product.quantity++;
                 if (product.quantity > 0) {
 
-                    product.precio = parseInt(product.Precio_Mayorista) * product.quantity;
+                    product.precio =  Math.round(isAuth === 'true' ? parseInt(product.Precio_Mayorista) : parseInt(product.Precio_detal)) * product.quantity;
                 }
             }
 
             let iva_decimal = parseInt(product.GrupoDeProductos.IVA1) / 100;
 
-            subtotal += product.precio - (iva_decimal * product.precio);
+            subtotal += Math.round(product.precio - (iva_decimal * product.precio));
             total += product.precio;
-            iva += iva_decimal * product.precio;
+            iva += Math.round(iva_decimal * product.precio);
         return product.ID !== null;
        });
 
