@@ -21,7 +21,7 @@ export const RegisterSend = ({discountPurchase, setDiscountPurchase, totalDiscou
     const [dataSend, setDataSend] = useState('');
     const [dataInfo, setDataInfo] = useState('');
     const [dataInfoJSON, setDataInfoJSON] = useState('');
-
+    const [loggedOutDocument, setloggedOutDocument] = useState('')
     const discountCoupon = useRef();
 
     const verifyUser = async(e) => {
@@ -772,12 +772,17 @@ export const RegisterSend = ({discountPurchase, setDiscountPurchase, totalDiscou
                                 </select>
 
                                
-                                <input type="text" className="form-control" name='document_id' id='document_id' placeholder="Número de documento" max='11' value={isAuth ? user.document_number : ""} onInput={(e) => {
-                                    const document = e.target.value
-                                    setUser({
-                                        ...user, 
-                                        document_number: document
-                                    })
+                                <input type="text" className="form-control" name='document_id' id='document_id' placeholder="Número de documento" max='11' value={isAuth ? user.document_number : loggedOutDocument} onInput={(e) => {
+                                    if (isAuth) {
+                                        const document = e.target.value
+                                        setUser({
+                                            ...user, 
+                                            document_number: document
+                                        })
+                                    } else {
+                                        setloggedOutDocument(e.target.value)
+                                    }
+                                        
                                 }}/>
                                 
                                 
