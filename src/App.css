@@ -535,7 +535,8 @@ img {
 
 
 .products__card-img {
-    background-color: var(--white);
+    background-color: #f9f9f9;
+    /*background-color: var(--white);*/
     width: 100%;
     
     padding-bottom: 80%;
