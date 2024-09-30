@@ -3,9 +3,8 @@ import { formatNumber } from '../helpers/formatNumbers.js';
 import { RegisterSend } from './RegisterSend.js';
 import { addDiscountPurchase } from '../helpers/addDiscountPurchase.js';
 
-export const Cart = ({discountPurchase, setDiscountPurchase, setTotalDiscount, totalDiscount, productsCart, setProductsCart, iva, setIva, subtotal, setSubtotal, total, setTotal, isAuth}) => {
+export const Cart = ({discountPurchase, setDiscountPurchase, setTotalDiscount, totalDiscount, productsCart, setProductsCart, iva, setIva, subtotal, setSubtotal, total, setTotal, isAuth, user, setUser}) => {
     // const [listCart, setListCart] = useState([]);
-
 
     const [clients, setClients] = useState([]);
     const [alertSuccess, setAlertSuccess] = useState('');
@@ -363,7 +362,7 @@ export const Cart = ({discountPurchase, setDiscountPurchase, setTotalDiscount, t
                     </div>
                     
                     <div className="col col-33 col-mb-100 position-relative">
-                        <RegisterSend setTotalDiscount={setTotalDiscount} totalDiscount={totalDiscount} discountPurchase={discountPurchase} setDiscountPurchase={setDiscountPurchase} iva={iva} setTotal={setTotal} total={total} subtotal={subtotal} productsCart={productsCart} setProductsCart={setProductsCart} setAlertSuccess={setAlertSuccess} setBlockOptions={setBlockOptions}/>
+                        <RegisterSend setTotalDiscount={setTotalDiscount} totalDiscount={totalDiscount} discountPurchase={discountPurchase} setDiscountPurchase={setDiscountPurchase} iva={iva} setTotal={setTotal} total={total} subtotal={subtotal} productsCart={productsCart} setProductsCart={setProductsCart} setAlertSuccess={setAlertSuccess} setBlockOptions={setBlockOptions} user={user} setUser={setUser} isAuth={isAuth}/>
                     </div>
                 </div>
 

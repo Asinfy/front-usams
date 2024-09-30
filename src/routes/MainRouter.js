@@ -111,6 +111,7 @@ export const MainRouter = () => {
 
             const loggedUser = {
                 email: fetchedUser.Email,
+                document_number : fetchedUser.document_number,
                 status: 'loggedIn'
             }
             setUser(loggedUser)
@@ -151,7 +152,7 @@ export const MainRouter = () => {
           </main>
 
           <Footer />
-          <Cart discountPurchase={discountPurchase} setDiscountPurchase={setDiscountPurchase} totalDiscount={totalDiscount} setTotalDiscount={setTotalDiscount} productsCart={productsCart} setProductsCart={setProductsCart} iva={iva} setIva={setIva} subtotal={subtotal} setSubtotal={setSubtotal} total={total} setTotal={setTotal} isAuth={isAuth} />
+          <Cart discountPurchase={discountPurchase} setDiscountPurchase={setDiscountPurchase} totalDiscount={totalDiscount} setTotalDiscount={setTotalDiscount} productsCart={productsCart} setProductsCart={setProductsCart} iva={iva} setIva={setIva} subtotal={subtotal} setSubtotal={setSubtotal} total={total} setTotal={setTotal} isAuth={isAuth} user={user} setUser={setUser}/>
           <DetailProducts isAuth={isAuth} discountPurchase={discountPurchase} setTotalDiscount={setTotalDiscount} productsCart={productsCart} productDetail={productDetail} setProductsCart={setProductsCart} setIva={setIva} setSubtotal={setSubtotal} setTotal={setTotal}/>
 
       </BrowserRouter>

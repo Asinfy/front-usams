@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { formatNumber } from '../helpers/formatNumbers.js';
 import { addDiscountPurchase } from '../helpers/addDiscountPurchase.js';
 
-export const RegisterSend = ({discountPurchase, setDiscountPurchase, totalDiscount, setTotalDiscount, iva, setTotal, total, subtotal, productsCart, setProductsCart, setAlertSuccess, setBlockOptions}) => {
-
+export const RegisterSend = ({discountPurchase, setDiscountPurchase, totalDiscount, setTotalDiscount, iva, setTotal, total, subtotal, productsCart, setProductsCart, setAlertSuccess, setBlockOptions, user, setUser, isAuth}) => {
     const URL_CLIENTS = "https://zoho.accsolutions.tech/API/v1/Clientes_Report";
     const URL_CITIES = "https://zoho.accsolutions.tech/API/v1/Municipio1";
 
@@ -773,7 +772,13 @@ export const RegisterSend = ({discountPurchase, setDiscountPurchase, totalDiscou
                                 </select>
 
                                
-                                <input type="text" className="form-control" name='document_id' id='document_id' placeholder="Número de documento" max='11'/>
+                                <input type="text" className="form-control" name='document_id' id='document_id' placeholder="Número de documento" max='11' value={isAuth ? user.document_number : ""} onInput={(e) => {
+                                    const document = e.target.value
+                                    setUser({
+                                        ...user, 
+                                        document_number: document
+                                    })
+                                }}/>
                                 
                                 
                                 
