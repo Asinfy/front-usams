@@ -535,8 +535,8 @@ img {
 
 
 .products__card-img {
-    background-color: #f9f9f9;
-    /*background-color: var(--white);*/
+    /* background-color: #f9f9f9; */
+    background-color: var(--white);
     width: 100%;
     
     padding-bottom: 80%;
@@ -554,6 +554,7 @@ img {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    filter: drop-shadow(0px 0px 4px black);
 
 }
 
