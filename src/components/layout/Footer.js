@@ -54,9 +54,9 @@ export const Footer = () => {
                             <div className='footer__contact'>
                                 <h3>CONTÁCTANOS</h3>
                                 <ul>
-                                    <li> <span>Atención al cliente:</span>  </li>
-                                    <li> <span>Correo:</span> </li>
-                                    <li> <span>Dirección:</span>  </li>
+                                    <li><span>Atención al cliente:</span> Lunes a Viernes 8am - 6pm</li>
+                                    <li><span>Correo:</span> usams@tecnosuper.com.co</li>
+                                    <li><span>Dirección:</span> Km 3.6 Vía La Ceja - Rionegro, Mall Cantarrana Local 22</li>
                                 </ul>
                             </div>
 
@@ -69,7 +69,7 @@ export const Footer = () => {
                                     <span>Política de Tratamiento de datos</span>
                                     <div className='footer__brands'>
                                         <img src='./img/Logo Industria y Comercio.svg' />
-                                        <img src='./img/logo-asincode.png' />
+                                        <a target='blank' href='https://asincode.co'><img src='./img/logo-asincode.png' /></a>
                                     </div>
                                 </div>
 
@@ -81,7 +81,7 @@ export const Footer = () => {
             </div>
 
             <div className="footer__text">
-                <span>Copyright &copy; {new Date().getFullYear()} Tecnosuper - USAMS. Desarrollado por <b>Asincode</b>.</span>
+                <span>Copyright &copy; {new Date().getFullYear()} Tecnosuper - USAMS. Desarrollado por <b><a target='blank' href='https://asincode.co'>Asincode.</a></b></span>
             </div>
         </footer>
         <div className='load load-display'> 

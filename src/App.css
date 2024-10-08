@@ -1082,6 +1082,15 @@ img {
     text-align: center;
 }
 
+.footer__text a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.footer__text a:hover {
+    text-decoration: underline;
+}
+
 .footer__logos {
     background: rgb(47,128,161);
     background: linear-gradient(96deg, rgba(47,128,161,1) 0%, rgba(33,33,33,1) 0%, rgb(84, 84, 84) 50%, rgba(33,33,33,1) 100%);
@@ -1168,7 +1177,7 @@ img {
 
 .footer__brands img {
     margin-top: -1rem;
-    width: 13rem;
+    max-width: 100%;
 }
 
 /* =============== Otros ============= */
