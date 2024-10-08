@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { formatNumber } from '../../helpers/formatNumbers.js';
+import Login from '../Login.js'
 
-export const Header = ({total, products, setProducts, setCurrentPage}) => {
+export const Header = ({total, products, setUser, setProducts, setCurrentPage, setIsModalOpen, isModalOpen, isAuth, validateUser, setIsAuth}) => {
 
     //const [searchProduct, setSearchProduct] = useState('');
     const [listProducts, setListProducts] = useState([]);
@@ -18,6 +19,7 @@ export const Header = ({total, products, setProducts, setCurrentPage}) => {
     setTimeout(() => {
         trama.classList.add("open-trama-styles");
     },100)
+    
   
 
 } 
@@ -87,7 +89,7 @@ return (
                     <div className="header__container container">
                         <div className="header__logo">
                             <a href="/">
-                                <img src="./img/logo-usams-blanco.png" alt="" />
+                                <img className='header__imgLog' src="./img/logo-usams-blanco.png" alt="" />
                             </a>
                         </div>
                         <nav className="header__nav">
@@ -106,9 +108,21 @@ return (
                                 <span className="header__price-cart">{formatNumber(total, true)} COP</span>
                             </div>
                         </div>
-                        
+                        <div>
+                            <span className='login' onClick={() => {
+                                if (!isAuth) { 
+                                    return setIsModalOpen(true) 
+                                }
+                                else {
+                                    setIsAuth(false)
+                                    setUser(null)
+                                    localStorage.setItem("product_usams_asc", "[]");
+                                    window.location.reload();
+                                }
+                                
+                            }}>{!isAuth ? 'Iniciar sesion' : 'Cerrar Sesion'}</span>
+                        </div>
                     </div>
-
                 </div>
                 <div className='header-mb'>
                     <nav className="header__nav">
@@ -120,6 +134,9 @@ return (
                 </div>
             
             </header>
+            {isModalOpen && <Login validateUser={validateUser} setIsModalOpen={setIsModalOpen} />}
         </>
     )
 }
+
+

@@ -3,7 +3,7 @@ import { formatNumber } from '../helpers/formatNumbers.js';
 import { Products } from './Products.js';
 import { addProductCart } from '../helpers/addProductsCart.js';
 
-export const ProductsCategory = ({ discountPurchase, setTotalDiscount, category = '', productsCart, setProductsCart, setSubtotal, setTotal, products, setProducts, setIva, currentPage, setCurrentPage, setProductDetail}) => {
+export const ProductsCategory = ({ discountPurchase, setTotalDiscount, category = '', productsCart, setProductsCart, setSubtotal, setTotal, products, setProducts, setIva, currentPage, setCurrentPage, setProductDetail, isAuth}) => {
     
     let URL_BASE = category !== '' ? "https://zoho.accsolutions.tech/API/v1/Productos_USAMS?where=Marca.Marca%3D%22USAMS%22%26%26Tipo.Nombre%3D%22" + category + "%22" : "https://zoho.accsolutions.tech/API/v1/Productos_USAMS";
 
@@ -37,7 +37,7 @@ export const ProductsCategory = ({ discountPurchase, setTotalDiscount, category 
   //Agregar productos al carrito
     const addProduct = async(e,id) => {
 
-        addProductCart(e, id, URL_BASE_API, setProductsCart, setTotal, setSubtotal, setIva, discountPurchase, setTotalDiscount);
+        addProductCart(e, id, URL_BASE_API, setProductsCart, setTotal, setSubtotal, setIva, discountPurchase, setTotalDiscount, isAuth);
     }
 
     const openProductDetail = (product) => {
@@ -83,7 +83,7 @@ export const ProductsCategory = ({ discountPurchase, setTotalDiscount, category 
     <>
         {products && products.length !== 0 &&(
             
-            products.map( product => {
+            products.filter(product => isAuth ? product.Precio_Mayorista > '0' : product.Precio_detal > '0').map( product => {
                 return(
                     <div className="col col-33 col-mb-50" key={product.id}>
                         <article className="products__card-product">
@@ -124,10 +124,10 @@ export const ProductsCategory = ({ discountPurchase, setTotalDiscount, category 
                                         { product.Promosion !== null && product.Promosion === "Si" && product.PrecioComparacion !== 0 && product.PrecioComparacion !== null ? (
                                             <>
                                                 <span className="products__price">{formatNumber(product.PrecioComparacion, true)} COP</span>
-                                                <span className="products__price-before">{formatNumber(product.Precio_Mayorista, true) } COP</span>
+                                                <span className="products__price-before">{formatNumber(isAuth ? product.Precio_Mayorista : product.Precio_detal, true) } COP</span>
                                             </>
                                         ) : (
-                                            <span className="products__price">{formatNumber(product.Precio_Mayorista, true) } COP</span>
+                                            <span className="products__price">{formatNumber(isAuth ? product.Precio_Mayorista : product.Precio_detal, true) } COP</span>
                                         )}
                                        
                                     </div>
